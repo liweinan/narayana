@@ -1,5 +1,5 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <!-- JBoss, Home of Professional Open Source Copyright 2009, Red Hat Middleware 
 		LLC, and individual contributors as indicated by the @author tags. See the 
 		copyright.txt in the distribution for a full listing of individual contributors. 
@@ -14,20 +14,16 @@
 		Fifth Floor, Boston, MA 02110-1301, USA. (C) 2009, @author JBoss Inc. (jonathan.halliday@redhat.com) -->
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jboss.jbossts</groupId>
+  <parent>
+    <artifactId>jboss-parent</artifactId>
+    <groupId>org.jboss</groupId>
+    <version>10-redhat-1</version>
+  </parent>
   <artifactId>narayana-all</artifactId>
-  <version>4.17.3.Final</version>
+  <version>4.17.3.Final-redhat-1</version>
   <packaging>pom</packaging>
-  <url>http://www.jboss.org/jbosstm/</url>
   <name>${project.artifactId}</name>
   <description>${project.artifactId}</description>
-  <issueManagement>
-    <system>JIRA</system>
-    <url>https://jira.jboss.org/jira/browse/JBTM/</url>
-  </issueManagement>
-  <ciManagement>
-    <system>hudson</system>
-    <url>http://hudson.qa.jboss.com/hudson/view/JBossTS/</url>
-  </ciManagement>
   <developers>
     <developer>
       <id>nmcl</id>
@@ -118,72 +114,26 @@
       <url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
     </license>
   </licenses>
-  <scm>
-    <connection>scm:git:git@github.com:jbosstm/narayana.git</connection>
-    <developerConnection>scm:git:git@github.com:jbosstm/narayana.git</developerConnection>
-    <url>https://github.com/jbosstm/narayana</url>
-  </scm>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>jboss-public-repository-group</id>
-      <name>JBoss Public Repository Group</name>
-      <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
-  <repositories>
-    <repository>
-      <id>jbossThirdParty</id>
-      <url>https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/</url>
-    </repository>
-    <repository>
-      <id>jboss-public-repository-group</id>
-      <name>JBoss Public Maven Repository Group</name>
-      <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-    <!-- Needed for rest-tx -->
-    <repository>
-      <id>download-java-net</id>
-      <name>download-java-net</name>
-      <url>http://download.java.net/maven/2/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-  <distributionManagement>
-    <repository>
-      <id>jboss-releases-repository</id>
-      <name>JBoss Release Repository</name>
-      <url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</url>
-    </repository>
-    <snapshotRepository>
-      <id>jboss-snapshots-repository</id>
-      <name>JBoss Snapshot Repository</name>
-      <url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
-    </snapshotRepository>
-  </distributionManagement>
+	<repositories>
+	        <repository>
+	                <id>jboss-releases-repository-mead</id>
+	                <name>JBoss Releases Repository Mead</name>
+	                <url>http://download.devel.redhat.com/brewroot/repos/jb-eap-6-rhel-6-build/latest/maven/</url>
+	        </repository>
+	</repositories>
+	<pluginRepositories>
+	        <pluginRepository>
+	                <id>jboss-releases-repository-mead-build</id>
+	                <name>JBoss Releases Repository Mead Build</name>
+	                <url>http://download.devel.redhat.com/brewroot/repos/jb-eap-6-rhel-6-build/latest/maven</url>
+	        </pluginRepository>
+	</pluginRepositories>
   <build>
     <pluginManagement>
       <plugins>
         <plugin>
           <groupId>org.eclipse.m2e</groupId>
           <artifactId>lifecycle-mapping</artifactId>
-          <version>1.0.0</version>
           <configuration>
             <lifecycleMappingMetadata>
               <pluginExecutions>
@@ -197,7 +147,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore/>
+                    <ignore />
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -211,7 +161,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore/>
+                    <ignore />
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -225,10 +175,10 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore/>
+                    <ignore />
                   </action>
                 </pluginExecution>
-                <pluginExecution>
+<!--                <pluginExecution>
                 	<pluginExecutionFilter>
                 		<groupId>org.codehaus.mojo</groupId>
                 		<artifactId>findbugs-maven-plugin</artifactId>
@@ -238,57 +188,34 @@
                 		</goals>
                 	</pluginExecutionFilter>
                 	<action>
-                		<ignore></ignore>
+                		<ignore />
                 	</action>
-                </pluginExecution>
+                </pluginExecution>-->
               </pluginExecutions>
             </lifecycleMappingMetadata>
           </configuration>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
-          <artifactId>buildnumber-maven-plugin</artifactId>
-          <version>1.0</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>build-helper-maven-plugin</artifactId>
-          <version>1.7</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
           <artifactId>idlj-maven-plugin</artifactId>
-          <version>1.1</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>2.8</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>2.3.1</version>
-        <configuration>
-          <archive>
-            <manifestEntries>
+          <configuration>
+            <archive>
+              <manifestEntries>
                 <Implementation-Title>${project.name}</Implementation-Title>
                 <Implementation-URL>http://www.jboss.org/</Implementation-URL>
                 <Implementation-Vendor>JBoss by Red Hat, Inc.</Implementation-Vendor>
                 <Implementation-Vendor-Id>http://www.jboss.org/</Implementation-Vendor-Id>
-            </manifestEntries>
-          </archive>
-        </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-war-plugin</artifactId>
-          <version>2.1.1</version>
+              </manifestEntries>
+            </archive>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>2.3.2</version>
           <configuration>
             <source>1.6</source>
             <target>1.6</target>
@@ -298,7 +225,6 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.6</version>
           <configuration>
             <skip>true</skip>
           </configuration>
@@ -306,23 +232,23 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.9</version>
-            <configuration>
-              <forkMode>pertest</forkMode>
-              <workingDirectory>target/test-classes</workingDirectory>
-              <runOrder>alphabetical</runOrder>
-              <redirectTestOutputToFile>true</redirectTestOutputToFile>
-              <inherited>true</inherited>
-              <includes>
-                <include>**/*.java</include>
-              </includes>
-            </configuration>
+        <configuration>
+          <forkMode>pertest</forkMode>
+          <workingDirectory>target/test-classes</workingDirectory>
+          <runOrder>alphabetical</runOrder>
+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
+          <inherited>true</inherited>
+          <includes>
+              <include>**/*.java</include>
+            </includes>
+          
+        </configuration>
         </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-source-plugin</artifactId>
-          <version>2.1.2</version>
-        </plugin>
+        
+        
+        
+        
+        
 	</plugins>
     </pluginManagement>
     <plugins>
@@ -349,7 +275,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>emma-maven-plugin</artifactId>
-        <version>1.0-alpha-3</version>
         <inherited>true</inherited>
         <configuration>
           <metadataFile>${project.build.directory}/test-classes/coverage.em</metadataFile>
@@ -376,13 +301,12 @@
 				<message>"You must tell me where emma is located - set the -DTS_EMMA_JAR 
 				property"</message> </requireProperty> </rules> <fail>true</fail> </configuration> 
 				</execution> </executions> </plugin> -->
-	  <plugin>
+<!--	  <plugin>
 		  <groupId>org.codehaus.mojo</groupId>
 		  <artifactId>findbugs-maven-plugin</artifactId>
 		  <configuration>
 			  <skip>${findbugs.skip}</skip>
 		  </configuration>
-		  <version>2.3.3</version>
 		  <executions>
 			  <execution>
 				  <id>findbugs</id>
@@ -393,10 +317,10 @@
 			  </execution>
 		  </executions>
 	  </plugin>
+-->
 	  <plugin>
 		  <groupId>org.apache.maven.plugins</groupId>
 		  <artifactId>maven-site-plugin</artifactId>
-		  <version>3.0</version>
 		  <configuration>
 			  <reportPlugins>
 				  <plugin>
@@ -412,589 +336,136 @@
   <dependencyManagement>
     <dependencies>
             <dependency>
-              <groupId>org.jboss.arquillian.container</groupId>
-              <artifactId>arquillian-container-osgi</artifactId>
-              <version>${version.org.jboss.arquillian.osgi}</version>
+              <groupId>org.jboss.component.management</groupId>
+              <artifactId>jboss-dependency-management-all</artifactId>
+              <version>6.1.0-redhat-1</version>
+              <type>pom</type>
+              <scope>import</scope>
             </dependency>
 
-            <dependency>
-              <groupId>org.jboss.arquillian.container</groupId>
-              <artifactId>arquillian-container-spi</artifactId>
-              <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-              <groupId>org.jboss.arquillian.container</groupId>
-              <artifactId>arquillian-container-test-api</artifactId>
-              <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-              <groupId>org.jboss.arquillian.container</groupId>
-              <artifactId>arquillian-container-test-spi</artifactId>
-              <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-              <groupId>org.jboss.arquillian.container</groupId>
-              <artifactId>arquillian-container-test-impl-base</artifactId>
-              <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-                <groupId>org.jboss.arquillian.core</groupId>
-                <artifactId>arquillian-core-api</artifactId>
-                <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-                <groupId>org.jboss.arquillian.core</groupId>
-                <artifactId>arquillian-core-impl-base</artifactId>
-                <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-                <groupId>org.jboss.arquillian.core</groupId>
-                <artifactId>arquillian-core-spi</artifactId>
-                <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-                <groupId>org.jboss.arquillian.junit</groupId>
-                <artifactId>arquillian-junit-core</artifactId>
-                <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-                <groupId>org.jboss.arquillian.testng</groupId>
-                <artifactId>arquillian-testng-core</artifactId>
-                <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-              <groupId>org.jboss.arquillian.junit</groupId>
-              <artifactId>arquillian-junit-container</artifactId>
-              <version>${version.org.jboss.arquillian.core}</version>
-              <exclusions>
-                <exclusion>
-                  <groupId>commons-logging</groupId>
-                  <artifactId>commons-logging</artifactId>
-                </exclusion>
-              </exclusions>
-            </dependency>
+            
 
-            <dependency>
-              <groupId>org.jboss.arquillian.testng</groupId>
-              <artifactId>arquillian-testng-container</artifactId>
-              <version>${version.org.jboss.arquillian.core}</version>
-              <exclusions>
-                <exclusion>
-                  <groupId>commons-logging</groupId>
-                  <artifactId>commons-logging</artifactId>
-                </exclusion>
-                  <exclusion>
-                      <groupId>org.jboss.logging</groupId>
-                      <artifactId>jboss-logging-tools</artifactId>
-                  </exclusion>
-              </exclusions>
-            </dependency>
+            
 
-            <dependency>
-              <groupId>org.jboss.arquillian.protocol</groupId>
-              <artifactId>arquillian-protocol-jmx</artifactId>
-              <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-              <groupId>org.jboss.arquillian.protocol</groupId>
-              <artifactId>arquillian-protocol-servlet</artifactId>
-              <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-                <groupId>org.jboss.arquillian.test</groupId>
-                <artifactId>arquillian-test-spi</artifactId>
-                <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-                <groupId>org.jboss.arquillian.test</groupId>
-                <artifactId>arquillian-test-impl-base</artifactId>
-                <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-                <groupId>org.jboss.arquillian.testenricher</groupId>
-                <artifactId>arquillian-testenricher-cdi</artifactId>
-                <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-                <groupId>org.jboss.arquillian.testenricher</groupId>
-                <artifactId>arquillian-testenricher-ejb</artifactId>
-                <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-                <groupId>org.jboss.arquillian.testenricher</groupId>
-                <artifactId>arquillian-testenricher-initialcontext</artifactId>
-                <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
+            
 
-            <dependency>
-                <groupId>org.jboss.arquillian.testenricher</groupId>
-                <artifactId>arquillian-testenricher-osgi</artifactId>
-                <version>${version.org.jboss.arquillian.osgi}</version>
-            </dependency>
+            
 
-            <dependency>
-                <groupId>org.jboss.arquillian.testenricher</groupId>
-                <artifactId>arquillian-testenricher-resource</artifactId>
-                <version>${version.org.jboss.arquillian.core}</version>
-            </dependency>
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.4</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-httpclient</groupId>
-            <artifactId>commons-httpclient</artifactId>
-            <version>3.1-jbossorg-1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.6.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.6.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.6.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.transaction</groupId>
-            <artifactId>jboss-transaction-api_1.1_spec</artifactId>
-            <version>1.0.1.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.ironjacamar</groupId>
-            <artifactId>ironjacamar-spec-api</artifactId>
-            <version>1.0.9.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.10</version>
-        </dependency>
-        <dependency>
-            <groupId>emma</groupId>
-            <artifactId>emma</artifactId>
-            <version>2.0.5312</version>
-        </dependency>
-        <dependency>
-            <groupId>emma</groupId>
-            <artifactId>emma_ant</artifactId>
-            <version>2.0.5312</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hornetq</groupId>
-            <artifactId>hornetq-core</artifactId>
-            <version>2.2.13.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.netty</groupId>
-            <artifactId>netty</artifactId>
-            <version>3.2.6.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>tanukisoft</groupId>
-            <artifactId>wrapper</artifactId>
-            <version>3.2.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jacorb</groupId>
-            <artifactId>jacorb</artifactId>
-            <version>2.3.1.jbossorg-1</version>
-        </dependency>
-        <dependency>
-            <groupId>jacorb</groupId>
-            <artifactId>idl</artifactId>
-            <version>2.3.1jboss.patch01-brew</version><!-- TODO AS7 -->
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.logmanager</groupId>
-            <artifactId>jboss-logmanager</artifactId>
-            <version>1.2.2.GA</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss</groupId>
-            <artifactId>jboss-transaction-spi</artifactId>
-            <version>7.0.0.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.integration</groupId>
-            <artifactId>jboss-corba-ots-spi</artifactId>
-            <version>6.0.0.CR1</version><!-- TODO AS7 src includes newer version of this, so its pom does not. -->
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.jbossas</groupId>
-            <artifactId>jboss-server-manager</artifactId>
-            <version>1.0.4.Final</version><!-- TODO AS7 -->
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.ejb</groupId>
-            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
-            <version>1.0.2.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.remoting</groupId>
-            <artifactId>jboss-remoting</artifactId>
-            <version>2.5.3</version><!-- TODO AS7 -->
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_3.0_spec</artifactId>
-            <version>1.0.1.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>dom4j</groupId>
-            <artifactId>dom4j</artifactId>
-            <version>1.6.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.logging</groupId>
-            <artifactId>jboss-logging</artifactId>
-            <version>3.1.0.GA</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.logging</groupId>
-            <artifactId>jboss-logging-processor</artifactId>
-            <version>1.0.0.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.ws</groupId>
-            <artifactId>jbossws-api</artifactId>
-            <version>1.0.0.GA</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>1.0.1.Final</version>
-        </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts</groupId>
-        <artifactId>common</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.arjunacore</groupId>
-        <artifactId>arjuna</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.arjunacore</groupId>
-        <artifactId>arjunacore-services</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.arjunacore</groupId>
-        <artifactId>arjunacore</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.arjunacore</groupId>
-        <artifactId>arjunacore</artifactId>
-        <version>${project.version}</version>
-        <classifier>sources</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.arjunacore</groupId>
-        <artifactId>arjunacore</artifactId>
-        <version>${project.version}</version>
-        <classifier>javadoc</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.arjunacore</groupId>
-        <artifactId>txoj</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jta</groupId>
-        <artifactId>jta</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jta</groupId>
-        <artifactId>jdbc</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jta</groupId>
-        <artifactId>narayana-jta</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jta</groupId>
-        <artifactId>narayana-jta</artifactId>
-        <version>${project.version}</version>
-        <classifier>javadoc</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jta</groupId>
-        <artifactId>narayana-jta</artifactId>
-        <version>${project.version}</version>
-        <classifier>sources</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jts</groupId>
-        <artifactId>orbportability</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jts</groupId>
-        <artifactId>jacorb-idl</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jts</groupId>
-        <artifactId>idlj-idl</artifactId>
-        <version>${project.version}</version>
-      </dependency>
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
 
-      <dependency>
-        <groupId>org.jboss.jbossts.jts</groupId>
-        <artifactId>jacorb-idl</artifactId>
-        <type>test-jar</type>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jts</groupId>
-        <artifactId>idlj-idl</artifactId>
-        <type>test-jar</type>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jts</groupId>
-        <artifactId>jts</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jts</groupId>
-        <artifactId>jts</artifactId>
-        <classifier>idlj</classifier>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jts</groupId>
-        <artifactId>jtax</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jts</groupId>
-        <artifactId>jbossjts-jacorb</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jts</groupId>
-        <artifactId>jbossjts-jacorb</artifactId>
-        <version>${project.version}</version>
-        <classifier>javadoc</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jts</groupId>
-        <artifactId>jbossjts-jacorb</artifactId>
-        <version>${project.version}</version>
-        <classifier>sources</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jts</groupId>
-        <artifactId>jbossjts-integration</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.jts</groupId>
-        <artifactId>jbossjts-idlj</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>xts-test-servlet</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>wsas</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>ws-c11</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>ws-c11</artifactId>
-        <version>${project.version}</version>
-        <classifier>api</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>ws-c11</artifactId>
-        <version>${project.version}</version>
-        <classifier>war</classifier>
-        <type>war</type>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>ws-t11</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>ws-t11</artifactId>
-        <version>${project.version}</version>
-        <classifier>api</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>ws-t11</artifactId>
-        <version>${project.version}</version>
-        <classifier>client</classifier>
-        <type>war</type>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>ws-t11</artifactId>
-        <version>${project.version}</version>
-        <classifier>coordinator</classifier>
-        <type>war</type>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>ws-t11</artifactId>
-        <version>${project.version}</version>
-        <classifier>participant</classifier>
-        <type>war</type>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>wscf11</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>wstx11</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>wstx11</artifactId>
-        <version>${project.version}</version>
-        <classifier>api</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>recovery</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>bridge</artifactId>
-        <version>${project.version}</version>
-        <classifier>api</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>bridge</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>jbossxts</artifactId>
-        <version>${project.version}</version>
-        <classifier>api</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>jbossxts</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>jbossxts</artifactId>
-        <version>${project.version}</version>
-        <classifier>javadoc</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>jbossxts</artifactId>
-        <version>${project.version}</version>
-        <classifier>sources</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.xts</groupId>
-        <artifactId>service</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.rts</groupId>
-        <artifactId>restat-web</artifactId>
-        <version>${project.version}</version>
-        <type>war</type>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.rts</groupId>
-        <artifactId>restat-util</artifactId>
-        <version>${project.version}</version>
-        <type>jar</type>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.rts</groupId>
-        <artifactId>restat-api</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts.rts</groupId>
-        <artifactId>restat-api</artifactId>
-        <version>${project.version}</version>
-        <classifier>javadoc</classifier>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.jbossts</groupId>
-        <artifactId>jbosstxbridge</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.byteman</groupId>
-        <artifactId>byteman</artifactId>
-        <version>2.0.1</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.byteman</groupId>
-        <artifactId>byteman-install</artifactId>
-        <version>2.0.1</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.byteman</groupId>
-        <artifactId>byteman-submit</artifactId>
-        <version>2.0.1</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.byteman</groupId>
-        <artifactId>byteman-bmunit</artifactId>
-        <version>2.0.1</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jboss.byteman</groupId>
-        <artifactId>byteman-dtest</artifactId>
-        <version>2.0.1</version>
-      </dependency>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
   </dependencies>
   </dependencyManagement>
   <properties>
@@ -1026,10 +497,10 @@
         <module>ArjunaJTS</module>
         <module>rest-tx</module>
         <module>txbridge</module>
-        <module>fileio</module>
-        <module>STM</module>
+<!--        <module>fileio</module>-->
+<!--        <module>STM</module>-->
         <module>txframework</module>
-        <module>narayana-full</module>
+<!--        <module>narayana-full</module>-->
       </modules>
     </profile>
     <profile>
@@ -1098,4 +569,5 @@
         </build>
     </profile>
   </profiles>
+<!-- Modified by POM Artifact-Version Manipulator version 1.2.3-redhat-1-eap (a887592) -->
 </project>

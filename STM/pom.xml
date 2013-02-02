@@ -20,14 +20,17 @@
     <dependency>
       <groupId>org.jboss.jbossts</groupId>
       <artifactId>common</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.arjunacore</groupId>
       <artifactId>arjuna</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.arjunacore</groupId>
       <artifactId>txoj</artifactId>
+<version>${project.version}</version>
     </dependency>
 <!--    <dependency>
       <groupId>commons-logging</groupId>

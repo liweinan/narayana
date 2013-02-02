@@ -10,12 +10,11 @@
 	PURPOSE. See the GNU Lesser General Public License for more details. You 
 	should have received a copy of the GNU Lesser General Public License, v.2.1 
 	along with this distribution; if not, write to the Free Software Foundation, 
-	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.jboss.jbossts</groupId>
         <artifactId>narayana-all</artifactId>
-        <version>4.17.3.Final</version>
+        <version>4.17.3.Final-redhat-1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -30,25 +29,15 @@
         <version.byteman>2.0.1</version.byteman>
         <version.apache.httpcomponents>4.1.2</version.apache.httpcomponents>
         <byteman.home>${project.build.directory}/byteman</byteman.home>
-        <general.server.jvm.args>
-            -Xms64m -Xmx512m -XX:MaxPermSize=256m
-        </general.server.jvm.args>
-        <ipv4.server.jvm.args></ipv4.server.jvm.args>
+        <general.server.jvm.args>-Xms64m -Xmx512m -XX:MaxPermSize=256m</general.server.jvm.args>
         <ipv6.server.jvm.args>-Djboss.bind.address=[::1] -Djboss.bind.address.management=[::1] -Djboss.bind.address.unsecure=[::1] -Djava.net.preferIPv4Stack=false -Djava.net.preferIPv6Addresses=true</ipv6.server.jvm.args>
-        <byteman.server.jvm.args>
-            -Dorg.jboss.byteman.debug=true -Dorg.jboss.byteman.verbose=true -Dorg.jboss.byteman.contrib.dtest.rmiregistry.port=1199
+        <byteman.server.jvm.args>-Dorg.jboss.byteman.debug=true -Dorg.jboss.byteman.verbose=true -Dorg.jboss.byteman.contrib.dtest.rmiregistry.port=1199
             -Djboss.modules.system.pkgs=org.jboss.byteman
-            -javaagent:${byteman.home}/byteman.jar=port:9091,listener:true,sys:${byteman.home}/byteman-dtest.jar
-        </byteman.server.jvm.args>
-        <byteman.server.ipv6.jvm.args>
-            -Dorg.jboss.byteman.debug=true -Dorg.jboss.byteman.verbose=true -Dorg.jboss.byteman.contrib.dtest.rmiregistry.port=1199
+            -javaagent:${byteman.home}/byteman.jar=port:9091,listener:true,sys:${byteman.home}/byteman-dtest.jar</byteman.server.jvm.args>
+        <byteman.server.ipv6.jvm.args>-Dorg.jboss.byteman.debug=true -Dorg.jboss.byteman.verbose=true -Dorg.jboss.byteman.contrib.dtest.rmiregistry.port=1199
             -Djboss.modules.system.pkgs=org.jboss.byteman
-<!--
-            -javaagent:${byteman.home}/byteman.jar=address:0:0:0:0:0:0:0:1,port:9091,listener:true,sys:${byteman.home}/byteman-dtest.jar
--->
-            -javaagent:${byteman.home}/byteman.jar=port:9091,listener:true,sys:${byteman.home}/byteman-dtest.jar
-        </byteman.server.ipv6.jvm.args>
-        <jpda.server.jvm.args/>
+
+            -javaagent:${byteman.home}/byteman.jar=port:9091,listener:true,sys:${byteman.home}/byteman-dtest.jar</byteman.server.ipv6.jvm.args>
     </properties>
     <build>
         <plugins>
@@ -60,7 +49,7 @@
                     <skip>false</skip>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
@@ -88,18 +77,28 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
                 </configuration>
+            <executions>
+                <execution>
+                    <id>default-testCompile</id>
+                    <phase>test-compile</phase>
+                    <goals>
+                        <goal>testCompile</goal>
+                    </goals>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </execution>
+            </executions>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.11</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
@@ -111,27 +110,20 @@
         		<plugin>
         			<groupId>org.eclipse.m2e</groupId>
         			<artifactId>lifecycle-mapping</artifactId>
-        			<version>1.0.0</version>
         			<configuration>
         				<lifecycleMappingMetadata>
         					<pluginExecutions>
         						<pluginExecution>
         							<pluginExecutionFilter>
-        								<groupId>
-        									org.apache.maven.plugins
-        								</groupId>
-        								<artifactId>
-        									maven-dependency-plugin
-        								</artifactId>
-        								<versionRange>
-        									[2.1,)
-        								</versionRange>
+        								<groupId>org.apache.maven.plugins</groupId>
+        								<artifactId>maven-dependency-plugin</artifactId>
+        								<versionRange>[2.1,)</versionRange>
         								<goals>
         									<goal>copy</goal>
         								</goals>
         							</pluginExecutionFilter>
         							<action>
-        								<ignore></ignore>
+        								<ignore />
         							</action>
         						</pluginExecution>
         					</pluginExecutions>
@@ -151,22 +143,23 @@
             <!-- JCA API -->
             <groupId>org.jboss.ironjacamar</groupId>
             <artifactId>ironjacamar-spec-api</artifactId>
-            <version>1.0.0.Beta5</version>
+<version>1.0.15.Final-redhat-0-todo</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.jbossts.xts</groupId>
             <artifactId>jbossxts</artifactId>
             <classifier>api</classifier>
+<version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.jbossts.jta</groupId>
             <artifactId>narayana-jta</artifactId>
+<version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
-            <version>3.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -183,7 +176,7 @@
        <dependency>
             <groupId>org.jboss.spec</groupId>
             <artifactId>jboss-javaee-6.0</artifactId>
-            <version>1.0.0.Final</version>
+<version>3.0.1.Final-redhat-1</version>
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
@@ -191,7 +184,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${version.junit}</version>
             <scope>test</scope>
         </dependency>
 
@@ -200,32 +192,28 @@
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
         </dependency>
-
+<!--
         <dependency>
             <groupId>org.jboss.byteman</groupId>
             <artifactId>byteman</artifactId>
-            <version>${version.byteman}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.jboss.byteman</groupId>
             <artifactId>byteman-dtest</artifactId>
-            <version>${version.byteman}</version>
             <scope>test</scope>
         </dependency>
-
+-->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>${version.apache.httpcomponents}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
-            <version>${version.apache.httpcomponents}</version>
             <scope>test</scope>
         </dependency>
 
@@ -234,7 +222,6 @@
 		<profile>
 			<id>arq</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
 			</activation>
 			<build>
 				<plugins>
@@ -276,7 +263,6 @@
 		<profile>
 			<id>arqIPv6</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
 			</activation>
 			<build>
 				<plugins>
@@ -347,4 +333,5 @@
             </build>
         </profile>
       </profiles>
+<!-- Modified by POM Artifact-Version Manipulator version 1.2.3-redhat-1-eap (a887592) -->
 </project>

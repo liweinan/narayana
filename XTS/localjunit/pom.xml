@@ -3,12 +3,11 @@
 	for a full listing of individual contributors. This copyrighted material is made available to anyone wishing to use, modify, copy, or redistribute it subject to the terms and conditions of the GNU Lesser 
 	General Public License, v. 2.1. This program is distributed in the hope that it will be useful, but WITHOUT A WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
 	PURPOSE. See the GNU Lesser General Public License for more details. You should have received a copy of the GNU Lesser General Public License, v.2.1 along with this distribution; if not, write to the Free 
-	Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<groupId>org.jboss.jbossts.xts</groupId>
 		<artifactId>xts-all</artifactId>
-		<version>4.17.3.Final</version>
+		<version>4.17.3.Final-redhat-1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
@@ -19,7 +18,6 @@
         <properties>
             <buildType>11</buildType>
             <general.server.jvm.args>-Xms64m -Xmx1024m -XX:MaxPermSize=512m</general.server.jvm.args>
-            <ipv4.server.jvm.args></ipv4.server.jvm.args>
             <ipv6.server.jvm.args>-Djboss.bind.address=[::1] -Djboss.bind.address.management=[::1] -Djboss.bind.address.unsecure=[::1] -Djava.net.preferIPv4Stack=false -Djava.net.preferIPv6Addresses=true</ipv6.server.jvm.args>
             <server.debug.args>Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5006</server.debug.args>
         </properties>
@@ -51,7 +49,6 @@
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
-            <version>1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -63,7 +60,6 @@
 		<profile>
 			<id>arq</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
 			</activation>
 			<build>
 				<plugins>
@@ -95,7 +91,6 @@
 		<profile>
 			<id>arqIPv6</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
 			</activation>
 			<build>
 				<plugins>
@@ -137,4 +132,5 @@
         <module>xtstest</module>
         <module>crash-recovery-tests</module>
 	</modules>
+<!-- Modified by POM Artifact-Version Manipulator version 1.2.3-redhat-1-eap (a887592) -->
 </project>

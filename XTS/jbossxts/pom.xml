@@ -10,12 +10,11 @@
 	PURPOSE. See the GNU Lesser General Public License for more details. You 
 	should have received a copy of the GNU Lesser General Public License, v.2.1 
 	along with this distribution; if not, write to the Free Software Foundation, 
-	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <groupId>org.jboss.jbossts.xts</groupId>
     <artifactId>xts-all</artifactId>
-    <version>4.17.3.Final</version>
+    <version>4.17.3.Final-redhat-1</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -121,7 +120,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>1.4</version>
         <executions>
           <execution>
             <id>apijar</id>
@@ -171,50 +169,61 @@
     <dependency>
       <groupId>org.jboss.jbossts.xts</groupId>
       <artifactId>wsas</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.xts</groupId>
       <artifactId>wscf11</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.xts</groupId>
       <artifactId>ws-c11</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.xts</groupId>
       <artifactId>ws-t11</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.xts</groupId>
       <artifactId>wstx11</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.xts</groupId>
       <artifactId>recovery</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.xts</groupId>
       <artifactId>service</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.xts</groupId>
       <artifactId>ws-c11</artifactId>
       <classifier>api</classifier>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.xts</groupId>
       <artifactId>ws-t11</artifactId>
       <classifier>api</classifier>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.xts</groupId>
       <artifactId>wstx11</artifactId>
       <classifier>api</classifier>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.xts</groupId>
       <artifactId>bridge</artifactId>
       <classifier>api</classifier>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.logging</groupId>
@@ -247,4 +256,5 @@
         </build>
     </profile>
   </profiles>
+<!-- Modified by POM Artifact-Version Manipulator version 1.2.3-redhat-1-eap (a887592) -->
 </project>

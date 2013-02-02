@@ -10,12 +10,11 @@
 	PURPOSE. See the GNU Lesser General Public License for more details. You 
 	should have received a copy of the GNU Lesser General Public License, v.2.1 
 	along with this distribution; if not, write to the Free Software Foundation, 
-	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <groupId>org.jboss.jbossts.jts</groupId>
     <artifactId>narayana-jts-all</artifactId>
-    <version>4.17.3.Final</version>
+    <version>4.17.3.Final-redhat-1</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -120,7 +119,6 @@
           <execution>
             <id>comp</id>
             <phase>compile</phase>
-            <goals/>
             <configuration>
               <excludes>
                 <exclude>**/*.*</exclude>
@@ -132,7 +130,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>1.4</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -164,26 +161,32 @@
     <dependency>
       <groupId>org.jboss.jbossts</groupId>
       <artifactId>common</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.arjunacore</groupId>
       <artifactId>arjuna</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.arjunacore</groupId>
       <artifactId>txoj</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jta</groupId>
       <artifactId>jta</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jta</groupId>
       <artifactId>jdbc</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>orbportability</artifactId>
+      <version>${project.version}</version>
        <exclusions>
          <exclusion>
            <groupId>org.jboss.jbossts.jts</groupId>
@@ -194,6 +197,7 @@
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>jts</artifactId>
+      <version>${project.version}</version>
        <exclusions>
          <exclusion>
            <groupId>org.jboss.jbossts.jts</groupId>
@@ -204,6 +208,7 @@
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>jtax</artifactId>
+      <version>${project.version}</version>
        <exclusions>
          <exclusion>
            <groupId>org.jboss.jbossts.jts</groupId>
@@ -214,7 +219,6 @@
     <dependency>
       <groupId>tanukisoft</groupId>
       <artifactId>wrapper</artifactId>
-      <version>3.2.3</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.logging</groupId>
@@ -232,7 +236,6 @@
     <profile>
       <id>idlj</id>
       <activation>
-        <activeByDefault>false</activeByDefault>
       </activation>
       <build>
         <plugins>
@@ -271,4 +274,5 @@
         </build>
     </profile>
   </profiles>
+<!-- Modified by POM Artifact-Version Manipulator version 1.2.3-redhat-1-eap (a887592) -->
 </project>

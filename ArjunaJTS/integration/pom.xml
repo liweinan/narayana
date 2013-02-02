@@ -10,12 +10,11 @@
 	PURPOSE. See the GNU Lesser General Public License for more details. You 
 	should have received a copy of the GNU Lesser General Public License, v.2.1 
 	along with this distribution; if not, write to the Free Software Foundation, 
-	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <groupId>org.jboss.jbossts.jts</groupId>
     <artifactId>narayana-jts-all</artifactId>
-    <version>4.17.3.Final</version>
+    <version>4.17.3.Final-redhat-1</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -25,6 +24,22 @@
   <packaging>jar</packaging>
   <build>
     <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>default-testCompile</id>
+                    <phase>test-compile</phase>
+                    <goals>
+                        <goal>testCompile</goal>
+                    </goals>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
       <plugin>
         <inherited>false</inherited>
         <groupId>org.apache.maven.plugins</groupId>
@@ -75,25 +90,62 @@
       </plugin>
     </plugins>
   </build>
+<dependencyManagement>
+<dependencies>
+    <dependency>
+      <groupId>org.jboss.metadata</groupId>
+      <artifactId>jboss-metadata-ejb</artifactId>
+      <version>7.0.8.Final-redhat-0-todo</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.metadata</groupId>
+      <artifactId>jboss-metadata-common</artifactId>
+      <version>7.0.8.Final-redhat-0-todo</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.metadata</groupId>
+      <artifactId>jboss-metadata-ear</artifactId>
+      <version>7.0.8.Final-redhat-0-todo</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.jbossts</groupId>
+      <artifactId>jbossjts</artifactId>
+      <version>4.16.6.Final-redhat-1</version>
+      <scope>provided</scope>
+    </dependency>
+</dependencies>
+</dependencyManagement>
   <dependencies>
+<dependency>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-iiop-client</artifactId>
+    <version>1.0.0.Final-redhat-2</version>
+</dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jta</groupId>
       <artifactId>jta</artifactId>
+      <version>${project.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>jts</artifactId>
+      <version>${project.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>jtax</artifactId>
+      <version>${project.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>orbportability</artifactId>
+<version>${project.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -110,14 +162,25 @@
     <dependency>
       <groupId>org.jboss.ironjacamar</groupId>
       <artifactId>ironjacamar-spec-api</artifactId>
-      <version>1.0.0.Beta5</version>
+      <version>1.0.15.Final-redhat-0-todo</version>
+      <scope>provided</scope>
+    </dependency>
+<!--    <dependency>
+      <groupId>org.jboss.integration</groupId>
+      <artifactId>jboss-corba-ots-spi</artifactId>
+      <scope>provided</scope>
+    </dependency>-->
+
+    <dependency>
+      <groupId>org.jboss.as</groupId>
+      <artifactId>jboss-as-transactions</artifactId>
+      <version>7.1.3.Final-redhat-5</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.jboss.integration</groupId>
-      <artifactId>jboss-corba-ots-spi</artifactId>
-      <version>6.0.0.CR1</version>
-      <!-- TODO AS7 -->
+      <groupId>org.jboss.metadata</groupId>
+      <artifactId>jboss-metadata-common</artifactId>
+      <version>7.0.8.Final-redhat-0-todo</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -130,10 +193,9 @@
       <artifactId>jboss-logging-processor</artifactId>
       <scope>provided</scope>
     </dependency>
-    <dependency>
+<!--    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.8.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -159,9 +221,9 @@
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
-      <version>1.3.168</version>
       <scope>test</scope>
     </dependency>
+-->
   </dependencies>
   <profiles>
     <profile>
@@ -183,4 +245,5 @@
         </build>
     </profile>
   </profiles>
+<!-- Modified by POM Artifact-Version Manipulator version 1.2.3-redhat-1-eap (a887592) -->
 </project>

@@ -10,12 +10,11 @@
 	PURPOSE. See the GNU Lesser General Public License for more details. You 
 	should have received a copy of the GNU Lesser General Public License, v.2.1 
 	along with this distribution; if not, write to the Free Software Foundation, 
-	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <groupId>org.jboss.jbossts.jts</groupId>
     <artifactId>narayana-jts-all</artifactId>
-    <version>4.17.3.Final</version>
+    <version>4.17.3.Final-redhat-1</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -66,7 +65,7 @@
               </goals>
               <configuration>
                 <skip>false</skip>
-                <systemProperties combine.children="append"/>
+                <systemProperties combine.children="append" />
                 <excludes>
                   <!-- exclude tests which we don't want to run -->
                   <exclude>**/common/**</exclude>
@@ -96,7 +95,7 @@
               </goals>
               <configuration>
                 <skip>false</skip>
-                <systemProperties combine.children="append"/>
+                <systemProperties combine.children="append" />
                 <excludes>
                   <!-- exclude tests which we don't want to run -->
                   <exclude>**/common/**</exclude>
@@ -133,10 +132,12 @@
     <dependency>
       <groupId>org.jboss.jbossts</groupId>
       <artifactId>common</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.arjunacore</groupId>
       <artifactId>arjuna</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jacorb</groupId>
@@ -147,20 +148,24 @@
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>jacorb-idl</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>jacorb-idl</artifactId>
+<version>${project.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>idlj-idl</artifactId>
+<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>idlj-idl</artifactId>
+<version>${project.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
@@ -168,13 +173,11 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.8.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.ant</groupId>
       <artifactId>ant</artifactId>
-      <version>1.7.1</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -190,22 +193,20 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.6.1</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.6.1</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.6.1</version>
             <scope>test</scope>
         </dependency>
   </dependencies>
+<!-- Modified by POM Artifact-Version Manipulator version 1.2.3-redhat-1-eap (a887592) -->
 </project>
