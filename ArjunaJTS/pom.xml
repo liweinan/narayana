@@ -38,7 +38,7 @@
   </build>
   <modules>
     <module>orbportability</module>
-    <!-- <module>idl</module> -->
+    <module>idl</module>
     <module>jts</module>
     <module>jtax</module>
     <module>narayana-jts-jacorb</module>
