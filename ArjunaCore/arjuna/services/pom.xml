@@ -29,11 +29,12 @@
     <dependency>
       <groupId>tanukisoft</groupId>
       <artifactId>wrapper</artifactId>
+      <version>3.2.3</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.arjunacore</groupId>
       <artifactId>arjuna</artifactId>
-<version>${project.version}</version>
+      <version>${project.version}</version>
     </dependency>
   </dependencies>
 <!-- Modified by POM Artifact-Version Manipulator version 1.2.3-redhat-1-eap (a887592) -->

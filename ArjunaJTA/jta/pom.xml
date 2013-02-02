@@ -91,9 +91,14 @@
       <!-- JCA API -->
       <groupId>org.jboss.ironjacamar</groupId>
       <artifactId>ironjacamar-spec-api</artifactId>
-<version>1.0.15.Final-redhat-0-todo</version>
-      <scope>provided</scope>
+      <version>1.0.15.Final-redhat-0-todo</version>
+      <!--<scope>provided</scope>-->
       <!-- TODO AS7 -->
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.spec.javax.resource</groupId>
+      <artifactId>jboss-connector-api_1.6_spec</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts</groupId>
