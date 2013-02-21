@@ -216,10 +216,10 @@
          </exclusion>
        </exclusions>
     </dependency>
-    <dependency>
+<!--    <dependency>
       <groupId>tanukisoft</groupId>
       <artifactId>wrapper</artifactId>
-    </dependency>
+    </dependency>-->
     <dependency>
       <groupId>org.jboss.logging</groupId>
       <artifactId>jboss-logging</artifactId>

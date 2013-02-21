@@ -26,11 +26,11 @@
     <sourceDirectory>classes</sourceDirectory>
   </build>
   <dependencies>
-    <dependency>
+<!--    <dependency>
       <groupId>tanukisoft</groupId>
       <artifactId>wrapper</artifactId>
       <version>3.2.3</version>
-    </dependency>
+    </dependency>-->
     <dependency>
       <groupId>org.jboss.jbossts.arjunacore</groupId>
       <artifactId>arjuna</artifactId>
