@@ -59,9 +59,9 @@
     </dependency>
     <dependency>
       <!-- JCA API -->
-<groupId>org.jboss.spec.javax.resource</groupId>
-<artifactId>jboss-connector-api_1.6_spec</artifactId>
-<version>1.0.1.Final-redhat-2</version>
+       <groupId>org.jboss.ironjacamar</groupId>
+       <artifactId>ironjacamar-spec-api</artifactId>
+       <version>1.0.15.Final-redhat-1</version>
       <!--<scope>provided</scope>-->
       <!-- TODO AS7 -->
     </dependency>
