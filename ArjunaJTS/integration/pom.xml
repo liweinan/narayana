@@ -160,8 +160,9 @@
                 </exclusions>  
     </dependency>
     <dependency>
-      <groupId>org.jboss.ironjacamar</groupId>
-      <artifactId>ironjacamar-spec-api</artifactId>
+<groupId>org.jboss.spec.javax.resource</groupId>
+<artifactId>jboss-connector-api_1.6_spec</artifactId>
+<version>1.0.1.Final-redhat-2</version>
       <scope>provided</scope>
     </dependency>
 <!--    <dependency>
