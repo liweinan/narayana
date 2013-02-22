@@ -24,7 +24,17 @@
   <description>jacorb idl</description>
   <packaging>jar</packaging>
 
-  <build>
+  <dependencyManagement>
+    <dependencies>
+          <dependency>
+            <groupId>plexus</groupId>
+            <artifactId>plexus-utils</artifactId>
+            <version>1.0.2</version>
+          </dependency>
+    </dependencies>
+  </dependencyManagement> 
+  
+  <build>    
     <plugins>
       <!-- generate a test jar containing test CORBA stubs for use by the jts tests -->
       <plugin>
@@ -44,11 +54,6 @@
         <artifactId>idlj-maven-plugin</artifactId>
         <version>1.0-redhat-1</version>
         <dependencies>
-          <dependency>
-            <groupId>plexus</groupId>
-            <artifactId>plexus-utils</artifactId>
-            <version>1.0.2</version>
-          </dependency>
           <dependency>
             <groupId>org.jacorb</groupId>
             <artifactId>jacorb-idl-compiler</artifactId>
