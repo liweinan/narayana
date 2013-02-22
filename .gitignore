@@ -5,4 +5,6 @@ target
 *.iml
 .idea
 jboss-as
+.DS_Store
+vman-workspace
 
