@@ -32,100 +32,24 @@
         <directory>config</directory>
       </resource>
     </resources>
-    <testSourceDirectory>tests/classes</testSourceDirectory>
     <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>add-test-source</id>
-            <phase>generate-test-sources</phase>
-            <goals>
-              <goal>add-test-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>${basedir}/../../common/tests/com/arjuna/common/tests/simple</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-         <executions>
-            <execution>
-              <!-- jacorb is the default (determined by what we exclude from the classpath) -->
-              <id>default-test</id>
-              <phase>test</phase>
-              <goals>
-                <goal>test</goal>
-              </goals>
-              <configuration>
-                <skip>false</skip>
-                <systemProperties combine.children="append" />
-                <excludes>
-                  <!-- exclude tests which we don't want to run -->
-                  <exclude>**/common/**</exclude>
-                  <exclude>**/initialisation/postinit/**</exclude>
-                  <exclude>**/initialisation/postset/**</exclude>
-                  <exclude>**/initialisation/preinit/**</exclude>
-                  <exclude>**/initialisation/TestAttributeCallback.java</exclude>
-                  <exclude>**/SimpleObjectImpl.java</exclude>
-                  <exclude>**/TestAttributeCallback.java</exclude>
-                  <exclude>**/PrePostTestCallback.java</exclude>
-                  <!-- these ones need fixing -->
-                  <exclude>**/PropertyInitTest.java</exclude>
-                  <exclude>**/PropertyInitTest3.java</exclude>
-                </excludes>
-                <classpathDependencyExcludes>
-                  <classpathDependencyExcludes>org.jboss.jbossts.jts:idlj-idl</classpathDependencyExcludes>
-                  <classpathDependencyExcludes>org.jboss.jbossts.jts:idlj-idl:test-jar</classpathDependencyExcludes>
-                </classpathDependencyExcludes>
-              </configuration>
-            </execution>
-            <execution>
-              <!-- test against the Sun ORB stubs (determined by what we exclude from the classpath) -->
-              <id>surefire-idlj</id>
-              <phase>test</phase>
-              <goals>
-                <goal>test</goal>
-              </goals>
-              <configuration>
-                <skip>false</skip>
-                <systemProperties combine.children="append" />
-                <excludes>
-                  <!-- exclude tests which we don't want to run -->
-                  <exclude>**/common/**</exclude>
-                  <exclude>**/initialisation/postinit/**</exclude>
-                  <exclude>**/initialisation/postset/**</exclude>
-                  <exclude>**/initialisation/preinit/**</exclude>
-                  <exclude>**/initialisation/TestAttributeCallback.java</exclude>
-                  <exclude>**/SimpleObjectImpl.java</exclude>
-                  <exclude>**/TestAttributeCallback.java</exclude>
-                  <exclude>**/PrePostTestCallback.java</exclude>
-                  <!-- these ones need fixing -->
-                  <exclude>**/PropertyInitTest.java</exclude>
-                  <exclude>**/PropertyInitTest3.java</exclude>
-                </excludes>
-                <reportsDirectory>${project.build.directory}/idlj-surefire-reports</reportsDirectory>
-                  <classpathDependencyExcludes>
-                    <classpathDependencyExcludes>org.jboss.jbossts.jts:jacorb-idl</classpathDependencyExcludes>
-                    <classpathDependencyExcludes>org.jboss.jbossts.jts:jacorb-idl:test-jar</classpathDependencyExcludes>
-                  </classpathDependencyExcludes>
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>default-testCompile</id>
+                    <phase>test-compile</phase>
+                    <goals>
+                        <goal>testCompile</goal>
+                    </goals>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
 
-                  <systemPropertyVariables combine.children="append">
-                    <OrbPortabilityEnvironmentBean.orbImpleClassName>com.arjuna.orbportability.internal.orbspecific.javaidl.orb.implementations.javaidl_1_4</OrbPortabilityEnvironmentBean.orbImpleClassName>
-                    <OrbPortabilityEnvironmentBean.poaImpleClassName>com.arjuna.orbportability.internal.orbspecific.javaidl.oa.implementations.javaidl_1_4</OrbPortabilityEnvironmentBean.poaImpleClassName>
-                    <OrbPortabilityEnvironmentBean.orbDataClassName>com.arjuna.orbportability.internal.orbspecific.versions.javaidl_1_4</OrbPortabilityEnvironmentBean.orbDataClassName>
-                  </systemPropertyVariables>
-
-              </configuration>
-            </execution>
-          </executions>
-      </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -190,6 +114,7 @@
       <artifactId>jboss-logging-processor</artifactId>
       <scope>provided</scope>
     </dependency>
+<!-- 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
@@ -207,6 +132,7 @@
             <artifactId>slf4j-simple</artifactId>
             <scope>test</scope>
         </dependency>
+ -->
   </dependencies>
 <!-- Modified by POM Artifact-Version Manipulator version 1.2.3-redhat-1-eap (a887592) -->
 </project>

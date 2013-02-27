@@ -24,131 +24,66 @@
   <description>jtax</description>
   <build>
     <sourceDirectory>classes</sourceDirectory>
-    <testSourceDirectory>tests/classes</testSourceDirectory>
     <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>add-test-source</id>
-            <phase>generate-test-sources</phase>
-            <goals>
-              <goal>add-test-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>${basedir}/../../common/tests/com/arjuna/common/tests/simple</source>
-                <source>${basedir}/../../ArjunaJTA/jta/tests/classes/com/hp/mwtests/ts/jta/subordinate</source>
-                <source>${basedir}/../../ArjunaJTA/jta/tests/classes/com/hp/mwtests/ts/jta/common</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
+        <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-         <executions>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <executions>
             <execution>
-              <id>default-test</id>
-              <phase>test</phase>
-              <goals>
-                <goal>test</goal>
-              </goals>
-              <configuration>
-                <skip>false</skip>
-                <argLine>-Xss2048k</argLine>
-                <systemProperties combine.children="append" />
-                <excludes>
-                  <exclude>**/common/**</exclude>
-                  <exclude>**/ExampleXAResource.java</exclude>
-                  <exclude>**/JTSTestCase.java</exclude>
-                  <exclude>**/LastOnePhaseResource.java</exclude>
-                  <exclude>**/implicit/**</exclude>
-                </excludes>
-                <classpathDependencyExcludes>
-                  <classpathDependencyExcludes>org.jboss.jbossts.jts:idlj-idl</classpathDependencyExcludes>
-                  <classpathDependencyExcludes>org.jboss.jbossts.jts:idlj-idl:test-jar</classpathDependencyExcludes>
-                </classpathDependencyExcludes>
-              </configuration>
+                <id>default-testCompile</id>
+                <phase>test-compile</phase>
+                <goals>
+                    <goal>testCompile</goal>
+                </goals>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
             </execution>
-            <execution>
-              <id>surefire-idlj</id>
-              <phase>test</phase>
-              <goals>
-                <goal>test</goal>
-              </goals>
-              <configuration>
-                <skip>false</skip>
-                <argLine>-Xss2048k</argLine>
-                <systemProperties combine.children="append" />
-                <excludes>
-                  <exclude>**/common/**</exclude>
-                  <exclude>**/ExampleXAResource.java</exclude>
-                  <exclude>**/JTSTestCase.java</exclude>
-                  <exclude>**/LastOnePhaseResource.java</exclude>
-                  <exclude>**/implicit/**</exclude>
-                </excludes>
-                <reportsDirectory>${project.build.directory}/idlj-surefire-reports</reportsDirectory>
-                  <classpathDependencyExcludes>
-                    <classpathDependencyExcludes>org.jboss.jbossts.jts:jacorb-idl</classpathDependencyExcludes>
-                    <classpathDependencyExcludes>org.jboss.jbossts.jts:jacorb-idl:test-jar</classpathDependencyExcludes>
-                  </classpathDependencyExcludes>
-
-                  <systemPropertyVariables combine.children="append">
-                    <OrbPortabilityEnvironmentBean.orbImpleClassName>com.arjuna.orbportability.internal.orbspecific.javaidl.orb.implementations.javaidl_1_4</OrbPortabilityEnvironmentBean.orbImpleClassName>
-                    <OrbPortabilityEnvironmentBean.poaImpleClassName>com.arjuna.orbportability.internal.orbspecific.javaidl.oa.implementations.javaidl_1_4</OrbPortabilityEnvironmentBean.poaImpleClassName>
-                    <OrbPortabilityEnvironmentBean.orbDataClassName>com.arjuna.orbportability.internal.orbspecific.versions.javaidl_1_4</OrbPortabilityEnvironmentBean.orbDataClassName>
-                  </systemPropertyVariables>
-
-              </configuration>
-            </execution>
-          </executions>
-      </plugin>
+        </executions>
+        </plugin>
     </plugins>
   </build>
   <dependencies>
     <dependency>
       <groupId>org.jboss.jbossts.jta</groupId>
       <artifactId>jta</artifactId>
-<version>${project.version}</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>jts</artifactId>
-<version>${project.version}</version>
+      <version>${project.version}</version>
     </dependency>
     <!-- pull in IDL stubs for each supported ORB (JacORB and Sun) -->
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>jacorb-idl</artifactId>
-<version>${project.version}</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>jacorb-idl</artifactId>
-<version>${project.version}</version>
+      <version>${project.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>idlj-idl</artifactId>
-<version>${project.version}</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>idlj-idl</artifactId>
-<version>${project.version}</version>
+      <version>${project.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
-
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>orbportability</artifactId>
-<version>${project.version}</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.spec.javax.transaction</groupId>
@@ -178,6 +113,7 @@
       <artifactId>jboss-logging-processor</artifactId>
       <scope>provided</scope>
     </dependency>
+<!-- 
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -205,6 +141,7 @@
       <artifactId>h2</artifactId>
       <scope>test</scope>
     </dependency>    
+ -->
   </dependencies>
 <!-- Modified by POM Artifact-Version Manipulator version 1.2.3-redhat-1-eap (a887592) -->
 </project>
