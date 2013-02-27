@@ -35,111 +35,25 @@
         <directory>etc</directory>
       </resource>
     </resources>
-    <testSourceDirectory>tests/classes</testSourceDirectory>
     <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>add-test-source</id>
-            <phase>generate-test-sources</phase>
-            <goals>
-              <goal>add-test-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>${basedir}/../../common/tests/com/arjuna/common/tests/simple</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <!-- the next three maven plugins (dependency, antrun and jar) are to ensure that the
-        default stubs are packaged with the final artifact of this module. Putting the stubs
-        in the default classesDirectory fails because we need to run the maven surefire
-        plugin twice, once against the JacORB stubs and another run using the Sun ORB stubs
-        and the surefire plugin puts the classes dir on the classpath
-        -->
-      <plugin>
+    <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-          <executions>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <executions>
             <execution>
-              <!--id>surefire-jacorb</id-->
-              <id>default-test</id>
-              <phase>test</phase>
-              <goals>
-                <goal>test</goal>
-              </goals>
-              <configuration>
-                <skip>false</skip>
-                <excludes>
-                  <exclude>**/JavaIdlRecoveryUnitTest.java</exclude>
-                  <exclude>**/common/**</exclude>
-                  <exclude>**/exceptions/**</exclude>
-                  <exclude>**/orbspecific/resources/**</exclude>
-                  <exclude>**/resources/**</exclude>
-                  <exclude>**/utils/ResourceTrace.java</exclude>
-                  <exclude>**/utils/Util.java</exclude>
-                  <exclude>**/TransactionTest2.java</exclude>
-                  <exclude>**/CheckedTransactions.java</exclude>
-                  <exclude>**/GridTest.java</exclude>
-                  <exclude>**/remote/**</exclude>
-                  <exclude>**/DefaultTimeout.java</exclude>
-                </excludes>
-                <classpathDependencyExcludes>
-                  <classpathDependencyExcludes>org.jboss.jbossts.jts:idlj-idl</classpathDependencyExcludes>
-                  <classpathDependencyExcludes>org.jboss.jbossts.jts:idlj-idl:test-jar</classpathDependencyExcludes>
-                </classpathDependencyExcludes>
-              </configuration>
+                <id>default-testCompile</id>
+                <phase>test-compile</phase>
+                <goals>
+                    <goal>testCompile</goal>
+                </goals>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
             </execution>
-
-            <execution>
-              <id>surefire-idlj</id>
-              <phase>test</phase>
-              <goals>
-                <goal>test</goal>
-              </goals>
-              <configuration>
-                <skip>false</skip>
-                <systemProperties combine.children="append" />
-                <excludes>
-                  <exclude>**/JavaIdlRecoveryUnitTest.java</exclude>
-
-                  <exclude>**/common/**</exclude>
-                  <exclude>**/exceptions/**</exclude>
-                  <exclude>**/orbspecific/resources/**</exclude>
-                  <exclude>**/resources/**</exclude>
-                  <exclude>**/utils/ResourceTrace.java</exclude>
-                  <exclude>**/utils/Util.java</exclude>
-                  <exclude>**/TransactionTest2.java</exclude>
-                  <exclude>**/CheckedTransactions.java</exclude>
-                  <exclude>**/GridTest.java</exclude>
-                  <exclude>**/remote/**</exclude>
-                  <exclude>**/DefaultTimeout.java</exclude>
-                </excludes>
-
-                <reportsDirectory>${project.build.directory}/idlj-surefire-reports</reportsDirectory>
-                  <classpathDependencyExcludes>
-                    <classpathDependencyExcludes>org.jboss.jbossts.jts:jacorb-idl</classpathDependencyExcludes>
-                    <classpathDependencyExcludes>org.jboss.jbossts.jts:jacorb-idl:test-jar</classpathDependencyExcludes>
-                  </classpathDependencyExcludes>
-
-                  <systemPropertyVariables combine.children="append">
-                    <OrbPortabilityEnvironmentBean.orbImpleClassName>com.arjuna.orbportability.internal.orbspecific.javaidl.orb.implementations.javaidl_1_4</OrbPortabilityEnvironmentBean.orbImpleClassName>
-                    <OrbPortabilityEnvironmentBean.poaImpleClassName>com.arjuna.orbportability.internal.orbspecific.javaidl.oa.implementations.javaidl_1_4</OrbPortabilityEnvironmentBean.poaImpleClassName>
-                    <OrbPortabilityEnvironmentBean.orbDataClassName>com.arjuna.orbportability.internal.orbspecific.versions.javaidl_1_4</OrbPortabilityEnvironmentBean.orbDataClassName>
-                  </systemPropertyVariables>
-
-              </configuration>
-            </execution>
-          </executions>
-      </plugin>
+        </executions>
+    </plugin>
     </plugins>
   </build>
-
   <dependencies>
     <dependency>
       <groupId>org.jacorb</groupId>
@@ -196,6 +110,7 @@
       <artifactId>jboss-logging-processor</artifactId>
       <scope>provided</scope>
     </dependency>
+<!-- 
     <dependency>
       <groupId>org.jboss.jbossts.arjunacore</groupId>
       <artifactId>txoj</artifactId>
@@ -226,7 +141,7 @@
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <scope>test</scope>
-    </dependency>
+    </dependency>-->
   </dependencies>
 <!-- Modified by POM Artifact-Version Manipulator version 1.2.3-redhat-1-eap (a887592) -->
 </project>

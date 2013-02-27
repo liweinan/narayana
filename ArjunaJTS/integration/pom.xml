@@ -145,7 +145,7 @@
     <dependency>
       <groupId>org.jboss.jbossts.jts</groupId>
       <artifactId>orbportability</artifactId>
-<version>${project.version}</version>
+      <version>${project.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -174,13 +174,11 @@
     <dependency>
       <groupId>org.jboss.as</groupId>
       <artifactId>jboss-as-transactions</artifactId>
-      <version>7.1.3.Final-redhat-5</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.metadata</groupId>
       <artifactId>jboss-metadata-common</artifactId>
-      <version>7.0.8.Final-redhat-0-todo</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
