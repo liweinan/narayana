@@ -95,25 +95,21 @@
     <dependency>
       <groupId>org.jboss.metadata</groupId>
       <artifactId>jboss-metadata-ejb</artifactId>
-      <version>7.0.8.Final-redhat-0-todo</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.metadata</groupId>
       <artifactId>jboss-metadata-common</artifactId>
-      <version>7.0.8.Final-redhat-0-todo</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.metadata</groupId>
       <artifactId>jboss-metadata-ear</artifactId>
-      <version>7.0.8.Final-redhat-0-todo</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.jbossts</groupId>
       <artifactId>jbossjts</artifactId>
-      <version>4.16.6.Final-redhat-1</version>
       <scope>provided</scope>
     </dependency>
 </dependencies>
@@ -122,7 +118,6 @@
 <dependency>
     <groupId>org.jboss</groupId>
     <artifactId>jboss-iiop-client</artifactId>
-    <version>1.0.0.Final-redhat-2</version>
 </dependency>
     <dependency>
       <groupId>org.jboss.jbossts.jta</groupId>
