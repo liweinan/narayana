@@ -24,7 +24,7 @@
   <description>wsas</description>
   <build>
     <sourceDirectory>classes</sourceDirectory>
-    <plugins>
+<!--    <plugins>
        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
@@ -36,13 +36,13 @@
             </execution>
           </executions>
         </plugin>
-    </plugins>
+    </plugins>-->
   </build>
   <dependencies>
     <dependency>
       <groupId>org.jboss.jbossts.arjunacore</groupId>
       <artifactId>arjunacore</artifactId>
-<version>${project.version}</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.logging</groupId>
